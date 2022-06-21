@@ -1,15 +1,15 @@
 useful react hook collection
 ----------------------------
+simple and useful react hook collection without any dependencies
 
-```jsx
- npm
-install`@perymimon/react-hooks`
+```cli
+npm i @perymimon/react-hooks
 ```
 
 ### useToggle
 
 ```jsx
-    import {useToggle} from '@perymimon/react-hooks/useToggle';
+import {useToggle} from '@perymimon/react-hooks/useToggle';
 
 function Demo() {
     const [isOpen, toggle] = useToggle(false);
@@ -25,7 +25,7 @@ function Demo() {
 ### useArray
 
 ```jsx
-    import {useArray} from '@perymimon/react-hooks/useArray';
+import {useArray} from '@perymimon/react-hooks/useArray';
 
 function Demo() {
     const {array, push, pop, shift, unshift, filter, update, splice, clear} = useArray(['b', 'a', 'c']);
@@ -48,7 +48,7 @@ function Demo() {
 ### useDebounceCallback
 
 ```jsx
-    import {useDebounceCallback} from '@perymimon/react-hooks/useDebounceCallback';
+import {useDebounceCallback} from '@perymimon/react-hooks/useDebounceCallback';
 
 function Demo() {
     const [value, setValue] = useState('');
@@ -65,7 +65,7 @@ function Demo() {
 ### useDebounceState
 
 ```jsx
-    import {useDebounceState} from '@perymimon/react-hooks/useDebounceState';
+import {useDebounceState} from '@perymimon/react-hooks/useDebounceState';
 
 function Demo(value) {
     const [debounceValue, setValue] = useDebounceState('', 1000);
@@ -82,7 +82,7 @@ function Demo(value) {
 ### useAsync
 
 ```jsx
-    import {useAsync} from '@perymimon/react-hooks/useAsync';
+import {useAsync} from '@perymimon/react-hooks/useAsync';
 
 function Demo() {
     const {value, loading, error} = useAsync(() => {
@@ -103,7 +103,7 @@ function Demo() {
 ### useFetch
 
 ```jsx
-    import {useFetch} from '@perymimon/react-hooks/useFetch';
+import {useFetch} from '@perymimon/react-hooks/useFetch';
 
 function Demo() {
     const {value, loading, error} = useFetch('https://api.github.com/users/perymimon');
@@ -121,7 +121,7 @@ function Demo() {
 ### useClickOutside
 
 ```jsx
-    import {useClickOutside} from '@perymimon/react-hooks/useClickOutside';
+import {useClickOutside} from '@perymimon/react-hooks/useClickOutside';
 
 function Demo() {
     useClickOutside(ref, (e) => {
@@ -139,7 +139,7 @@ function Demo() {
 ### useCookie
 
 ```jsx
-    import {useCookie} from '@perymimon/react-hooks/useCookie';
+import {useCookie} from '@perymimon/react-hooks/useCookie';
 
 function Demo() {
     const [value, setValue] = useCookie('name', 'perymimon');
@@ -156,7 +156,7 @@ function Demo() {
 ### useLocalStorage
 
 ```jsx
-    import {useLocalStorage} from '@perymimon/react-hooks/useStorage';
+import {useLocalStorage} from '@perymimon/react-hooks/useStorage';
 
 function Demo() {
     const [value, setValue] = useLocalStorage('name', 'perymimon');
@@ -170,7 +170,7 @@ function Demo() {
 ```
 
 ```jsx
-    import {useSessionStorage} from '@perymimon/react-hooks/useStorage';
+import {useSessionStorage} from '@perymimon/react-hooks/useStorage';
 
 function Demo() {
     const [value, setValue] = useSessionStorage('name', 'perymimon');
@@ -186,7 +186,7 @@ function Demo() {
 ### useDarkMode
 
 ```jsx
-    import {useDarkMode} from '@perymimon/react-hooks/useDarkMode';
+import {useDarkMode} from '@perymimon/react-hooks/useDarkMode';
 
 function Demo() {
     const [isDark, setDarkMode] = useDarkMode();
@@ -202,7 +202,7 @@ function Demo() {
 ### useCopyToClipboard
 
 ```jsx
-    import {useCopyToClipboard} from '@perymimon/react-hooks/useCopyToClipboard';
+import {useCopyToClipboard} from '@perymimon/react-hooks/useCopyToClipboard';
 
 function Demo() {
     const [copied, {value, success}] = useCopyToClipboard()
@@ -222,7 +222,7 @@ function Demo() {
 ### useEventListener
 
 ```jsx
-    import {useEventListener} from '@perymimon/react-hooks/useEventListener';
+import {useEventListener} from '@perymimon/react-hooks/useEventListener';
 
 function Demo() {
     const inputRef = useRef();
@@ -241,7 +241,7 @@ function Demo() {
 ### useGeolocation
 
 ```jsx
-    import {useGeolocation} from '@perymimon/react-hooks/useGeolocation';
+import {useGeolocation} from '@perymimon/react-hooks/useGeolocation';
 
 function Demo() {
     const {data, loading, error} = useGeolocation();
@@ -260,7 +260,7 @@ function Demo() {
 ### useHover
 
 ```jsx
-    import {useHover} from '@perymimon/react-hooks/useHover';
+import {useHover} from '@perymimon/react-hooks/useHover';
 
 function Demo() {
     const elementRef = useRef();
@@ -279,7 +279,7 @@ function Demo() {
 ### useLongPress
 
 ```jsx
-    import {useLongPress} from '@perymimon/react-hooks/useLongPress';
+import {useLongPress} from '@perymimon/react-hooks/useLongPress';
 
 function Demo() {
     const elementRef = useRef();
@@ -298,7 +298,7 @@ function Demo() {
 ### useMediaQuery
 
 ```jsx
-    import {useMediaQuery} from '@perymimon/react-hooks/useMediaQuery';
+import {useMediaQuery} from '@perymimon/react-hooks/useMediaQuery';
 
 function Demo() {
     const smallScreen = useMediaQuery('(max-width: 600px)');
@@ -314,7 +314,7 @@ function Demo() {
 ### useOnlineStatus
 
 ```jsx
-    import {useOnlineStatus} from '@perymimon/react-hooks/useOnlineStatus';
+import {useOnlineStatus} from '@perymimon/react-hooks/useOnlineStatus';
 
 function Demo() {
     const isOnline = useOnlineStatus();
@@ -332,7 +332,7 @@ function Demo() {
 ### usePrevious
 
 ```jsx
-    import {previousRef} from '@perymimon/react-hooks/usePrevious';
+import {previousRef} from '@perymimon/react-hooks/usePrevious';
 
 function Demo() {
     const [value, setValue] = useState(0);
@@ -360,7 +360,7 @@ function Demo() {
 ### useStateWithHistory
 
 ```jsx
-    import {useStateWithHistory} from '@perymimon/react-hooks/useStateWithHistory';
+import {useStateWithHistory} from '@perymimon/react-hooks/useStateWithHistory';
 
 function Demo() {
     const [value, setValue, {history, pointer, back, forward, go}] = useStateWithHistory(0);
@@ -398,7 +398,6 @@ function Demo() {
 ```
 
 ### useUpdateEffect
-
 call callback only if it's changed, skip on the first render
 
 ```jsx
@@ -421,27 +420,29 @@ function Demo() {
 ```
 
 ### useEffectOnce
+ run callback only once, on the first render
 
 ```jsx
-    import {useEffectOnce} from '@perymimon/react-hooks/useEffectOnce';
+import {useEffectOnce} from '@perymimon/react-hooks/useEffectOnce';
     
-    function Demo() {
-        useEffectOnce(() => {
-            console.log('effect');
-        });
-    
-        return (
-            <div>
-                <div>value: {value}</div>
-            </div>
-        );
-    }
+function Demo() {
+    useEffectOnce(() => {
+        console.log('effect');
+    });
+
+    return (
+        <div>
+            <div>value: {value}</div>
+        </div>
+    );
+}
 ```    
 
 
 ## debuggers
 
 ### useRenderCount
+count the number of times the component is rendered
 
     import {useRenderCount} from '@perymimon/react-hooks/useRenderCount';
     
@@ -459,22 +460,120 @@ function Demo() {
 
 
 ### useDebugInfo
+console log info about component
+
 ```jsx
-    import {useDebugInfo} from '@perymimon/react-hooks/useDebugInfo';
+import {useDebugInfo} from '@perymimon/react-hooks/useDebugInfo';
     
-    function Demo() {
-        const [value, setValue] = useState(0);
-        const {count, changedProps, lastRender, timeSinceLastRender } = useDebugInfo();
+function Demo() {
+    const [value, setValue] = useState(0);
+    const {count, changedProps, lastRender, timeSinceLastRender } = useDebugInfo();
 
-        return (
-            <div>
-                <input value={value} onChange={e => setValue(e.target.value)}/>
-                <div>count: {count}</div>
-                <div>changedProps: {changedProps.join(',')}</div>
-                <div>lastRender: {lastRender}</div>
-                <div>timeSinceLastRender: {timeSinceLastRender}</div>
+    return (
+        <div>
+            <input value={value} onChange={e => setValue(e.target.value)}/>
+            <div>count: {count}</div>
+            <div>changedProps: {changedProps.join(',')}</div>
+            <div>lastRender: {lastRender}</div>
+            <div>timeSinceLastRender: {timeSinceLastRender}</div>
+        </div>
+    );
+}
+
+```
+
+### useOnScreen
+return true if element is on screen, false otherwise
+
+```jsx
+import {useOnScreen} from '@perymimon/react-hooks/useOnScreen';
+
+function Demo() {
+    const [value, setValue] = useState(0);
+    const elementRef = useRef();
+    const isVisible = useOnScreen(elementRef);
+    
+   
+    return (
+        <div className="scrolable-contaniner">
+            <div ref={elementRef}>
             </div>
-        );
-    }
+        </div>
+    )
+}
 
+```
+
+### useScript
+load script to document body from url
+
+```jsx
+import {useScript} from '@perymimon/react-hooks/useScript';
+
+function Demo() {
+    const {value, loading, error} = useScript('http://example.com/script.js')
+    return (
+        <div>
+            {loading ? <div>loading</div> : null}
+            {error ? <div>error</div> : null}
+            {value ? <div>value</div> : null}
+        </div>
+    )
+}
+```
+
+### useSize
+return size of element from ResizeObserver
+
+```jsx
+import {useSize} from '@perymimon/react-hooks/useSize';
+
+function Demo() {
+    const {width, height} = useSize(elementRef);
+    
+    return (
+        <div>
+             <textarea ref={elementRef} resize/>
+            <div>width: {width}</div>
+            <div>height: {height}</div>
+        </div>
+    )
+}
+
+```
+
+### useStateWithValidation
+state with isValid flag
+
+```jsx
+import {useStateWithValidation} from '@perymimon/react-hooks/useStateWithValidation';
+
+function Demo() {
+    const [state, setValue, isValid] = useStateWithValidation(v=>Number(v)>5, 0);
+    return (
+        <div>
+            <input value={value} onChange={e => setValue(e.target.value)}/>
+            <div>isValid: {isValid}</div>
+            <div>error: {error}</div>
+        </div>
+    )
+}
+
+```
+
+### useWindowSize
+return width and height of the window
+
+```jsx
+import {useWindowSize} from '@perymimon/react-hooks/useWindowSize';
+
+function Demo() {
+    const {width, height} = useWindowSize();
+    return (
+        <div>
+            <div>width: {width}</div>
+            <div>height: {height}</div>
+        </div>
+    )
+}
 ```

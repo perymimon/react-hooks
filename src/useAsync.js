@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useDebugValue, useEffect, useState} from "react";
 
 export default useAsync;
 
@@ -6,6 +6,8 @@ export  function useAsync(callback, dependencies  =[]) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [value, setValue] = useState(null);
+
+    useDebugValue([loading, error, value]);
 
     useEffect(() => {
         setLoading(true);

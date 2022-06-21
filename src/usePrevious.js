@@ -5,7 +5,7 @@ export default usePrevious;
 export function usePrevious(value){
     const currentRef = useRef(value)
     const previousRef= useRef()
-    useDebugValue(currentRef.current)
+    useDebugValue(previousRef.current)
 
     if(value !== currentRef.current){
         previousRef.current = currentRef.current
