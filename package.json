@@ -1,6 +1,7 @@
 {
   "name": "@perymimon/react-hooks",
   "version": "1.0.0-beta.2",
+  "type": "module",
   "private": false,
   "description": "",
   "main": "src/index.js",
@@ -8,11 +9,23 @@
     "src"
   ],
   "scripts": {
-
+    "test:debug": "nodemon --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand ",
+    "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js -- --verbose"
   },
   "author": "",
   "license": "ISC",
-  "peerDependencies": {
-    "react": "^18.2.0"
+  "pearDendencies": {
+    "@perymimon/let-map": ">=1.0.0",
+    "react": ">=18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.0.0-alpha.7",
+    "@testing-library/react-hooks": "^8.0.0-alpha.1",
+    "jest": "^28.1.1",
+    "react-test-renderer": "^18.2.0"
+  },
+  "transform": {},
+  "dependencies": {
+    "@perymimon/let-map": ">=1.0.0"
   }
 }

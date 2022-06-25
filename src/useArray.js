@@ -7,7 +7,7 @@ export  function useArray(initArray) {
     useDebugValue(array)
 
     function push(...args) {
-        setArray(array.concat(args))
+        setArray(a => a.concat(args))
     }
 
     function pop() {
