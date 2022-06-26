@@ -1,39 +1,25 @@
-import {LetMap} from "@perymimon/let-map"
 
 import { useRef, useState} from "react";
-import useRun from "../useRun";
-
-export function useLetMap(struct) {
-    const letMapRef = useRef(null)
-    const [value, forceRender] = useState([])
-
-    useRun(() => {
-        letMapRef.current = new LetMap(struct)
-        letMapRef.current.on('update', () => forceRender([]))
-    }, [])
-
-    useRun(() => {
-        letMapRef.current.setStruct(struct)
-    }, [struct])
-
-    return letMapRef.current
-}
-
+import {useLetMap} from "./useLetMap.js";
 
 export function useLetMapQueue({renderOnTipOnly = true}={}) {
     const map = useLetMap([])
     const [value, forceRender] = useState([])
+    let tipUpdated = false
 
     function push(key, ...values) {
         let array = map.let(key)
+        tipUpdated = (array.length === 0)
         array.push(...values)
-        if (array.length > 1 && renderOnTipOnly) return;
+        if ( !tipUpdated && renderOnTipOnly) return tipUpdated
         forceRender([])
+        return tipUpdated
     }
 
     function shift(key) {
         let array = map.let(key)
-        if (array.length > 0) forceRender([])
+        tipUpdated = array.length > 0
+        if (tipUpdated) forceRender([])
         return array.shift()
     }
 

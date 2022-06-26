@@ -27,6 +27,8 @@ export * from './useUpdateEffect'
 export * from './useRun'
 export * from './useScript'
 export * from './useWindowSize'
+export * from './advence/useLetMapQueue.js'
+export * from './advence/useLetMap.js'
 
 
 
