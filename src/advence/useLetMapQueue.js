@@ -1,5 +1,5 @@
 
-import { useRef, useState} from "react";
+import { useRef, useState, useCallback} from "react";
 import {useLetMap} from "./useLetMap.js";
 
 export function useLetMapQueue({renderOnTipOnly = true}={}) {
@@ -20,12 +20,16 @@ export function useLetMapQueue({renderOnTipOnly = true}={}) {
         let array = map.let(key)
         tipUpdated = array.length > 0
         if (tipUpdated) forceRender([])
+        if(array.length === 1){
+            map.delete(key)
+        }
         return array.shift()
     }
 
     function peek(key) {
-        let array = map.let(key)
-        return array[0]
+        let array = map.get(key)
+        if(!array) return null
+        return array[0] ?? null
     }
 
     function peekLast(key) {
@@ -33,5 +37,9 @@ export function useLetMapQueue({renderOnTipOnly = true}={}) {
         return array.at(-1)
     }
 
-    return {map, push, shift, peek, peekLast}
+    function deleteKey(key) {
+        return map.delete(key)
+    }
+
+    return {map, push, shift, peek, peekLast, deleteKey}
 }

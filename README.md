@@ -448,12 +448,13 @@ count the number of times the component is rendered
     
     function Demo() {
         const [value, setValue] = useState(0);
-        const {count} = useRenderCount();
+        const {loops, fullRender} = useRenderCount();
 
         return (
             <div>
                 <input value={value} onChange={e => setValue(e.target.value)}/> 
-                <div>count: {count}</div>
+                <div>functions loops: {loops}</div>
+                <div>full Render: {fullRender}</div>
             </div>
         );
     }
@@ -576,4 +577,50 @@ function Demo() {
         </div>
     )
 }
+```
+### useLetMap
+return New Map that aware to changed values
+
+```jsx
+import {useLetMap} from '@perymimon/react-hooks/useLetMap';
+
+function Demo(){
+    const [value, setValue] = useState(0);
+    const map = useLetMap();
+    map.set('key', value);
+    return (
+        <div>
+            <input value={value} onChange={e => setValue(e.target.value)}/>
+            <div>map: {map.get('key')}</div>
+        </div>
+    )    
+}
+````
+
+
+### useLetMapQueue
+manage a queue for each key
+
+```jsx
+import {useLetMapQueue} from '@perymimon/react-hooks/useLetMapQueue';
+
+function Demo(){
+    const {map, push, shift, peek, peekLast, deleteKey} = useLetMapQueue('key');
+    const [value, setValue] = useState(0);
+    const [key, setKey] = useState(0);
+    
+    return (
+        <div>
+            <input value={value} onChange={e => setValue(e.target.value)}/>
+            <input value={key} onChange={e => setKey(e.target.value)}/>
+            <button onClick={() => push(key, value)}>push</button>
+            <button onClick={() => shift(key)}>shift</button>
+            <button onClick={() => peek(key)}>peek</button>
+            <button onClick={() => peekLast(key)}>peekLast</button>
+            <button onClick={() => deleteKey(key)}>deleteKey</button>
+            <div>map: {JSON.stringify(map)}</div>
+        </div>
+    )
+}
+
 ```

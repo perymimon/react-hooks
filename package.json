@@ -1,6 +1,6 @@
 {
   "name": "@perymimon/react-hooks",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.4",
   "type": "module",
   "private": false,
   "description": "",
@@ -24,8 +24,5 @@
     "jest": "^28.1.1",
     "react-test-renderer": "^18.2.0"
   },
-  "transform": {},
-  "dependencies": {
-    "@perymimon/let-map": ">=1.0.0"
-  }
+  "transform": {}
 }

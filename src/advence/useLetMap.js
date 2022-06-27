@@ -2,8 +2,6 @@ import {useRef, useState} from "react";
 import {LetMap} from "@perymimon/let-map"
 import useRun from "../useRun";
 
-console.log('----------34-----------', useRef, 'useRef')
-
 export function useLetMap(struct) {
     const letMapRef = useRef(null)
     const [value, forceRender] = useState([])
