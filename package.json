@@ -5,16 +5,20 @@
   "author": "Pery Mimon <pery.mimon@gmail.com>",
   "type": "module",
   "private": false,
-
   "main": "index.js",
   "files": [
     "src"
   ],
+  "exports": {
+    ".": "./index.js",
+    "./*": "./src/*.js",
+    "./*.js": "./src/*.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "test:debug": "nodemon --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand ",
     "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js -- --verbose"
   },
-
   "license": "ISC",
   "dependencies": {
     "@perymimon/let-map": "^1.0.1-beta.1"
@@ -27,14 +31,9 @@
       "optional": false
     }
   },
-  "exports": {
-    ".": "./index.js",
-    "./*": "./src/*.js",
-    "./*.js": "./src/*.js",
-    "./package.json": "./package.json"
-  },
   "devDependencies": {
     "@testing-library/react": "^13.0.0-alpha.7",
+    "@testing-library/react-hooks": "^8.0.0-alpha.1",
     "jest": "^28.1.1",
     "react-test-renderer": "^18.2.0"
   },
