@@ -1,4 +1,4 @@
-import useEventListener from "./useEventListener";
+import useEventListener from "./useEventListener.js";
 import {useState} from "react";
 
 export default useHover;

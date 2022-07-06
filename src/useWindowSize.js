@@ -1,4 +1,4 @@
-import useEventListener from "./useEventListener";
+import useEventListener from "./useEventListener.js";
 import {useState} from "react";
 
 export function useWindowSize() {
@@ -13,4 +13,6 @@ export function useWindowSize() {
             width: window.innerWidth, height: window.innerHeight
         })
     }, window)
+
+    return windowSize
 }

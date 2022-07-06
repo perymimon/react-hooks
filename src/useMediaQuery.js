@@ -1,5 +1,5 @@
 import {useDebugValue, useEffect, useState} from "react";
-import useEventListener from "./useEventListener";
+import useEventListener from "./useEventListener.js";
 
 export default function useMediaQuery(mediaQuery){
     const [mediaQueryList, setMediaQueryList] = useState(window.matchMedia(mediaQuery));

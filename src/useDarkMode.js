@@ -1,5 +1,5 @@
-import {useLocalStorage} from "./useStorage";
-import useMediaQuery from "./useMediaQuery";
+import {useLocalStorage} from "./useStorage.js";
+import useMediaQuery from "./useMediaQuery.js";
 import {useEffect} from "react";
 
 export default function useDarkMode(callback) {
@@ -9,6 +9,7 @@ export default function useDarkMode(callback) {
 
     useEffect(() => {
         document.body.classList.toggle('dark-mode', enabled);
+        callback?.()
     },[enabled]);
 
     return [enabled, setDarkMode];

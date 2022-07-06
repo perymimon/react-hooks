@@ -1,10 +1,12 @@
 {
   "name": "@perymimon/react-hooks",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.9",
+  "description": "a collection of react-hook I collect and write",
+  "author": "Pery Mimon <pery.mimon@gmail.com>",
   "type": "module",
   "private": false,
-  "description": "",
-  "main": "src/index.js",
+
+  "main": "index.js",
   "files": [
     "src"
   ],
@@ -12,15 +14,27 @@
     "test:debug": "nodemon --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand ",
     "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js -- --verbose"
   },
-  "author": "",
+
   "license": "ISC",
+  "dependencies": {
+    "@perymimon/let-map": "^1.0.1-beta.1"
+  },
   "pearDendencies": {
-    "@perymimon/let-map": ">=1.0.0",
     "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    }
+  },
+  "exports": {
+    ".": "./index.js",
+    "./*": "./src/*.js",
+    "./*.js": "./src/*.js",
+    "./package.json": "./package.json"
   },
   "devDependencies": {
     "@testing-library/react": "^13.0.0-alpha.7",
-    "@testing-library/react-hooks": "^8.0.0-alpha.1",
     "jest": "^28.1.1",
     "react-test-renderer": "^18.2.0"
   },

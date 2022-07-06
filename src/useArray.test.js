@@ -1,6 +1,6 @@
 import {renderHook, act} from '@testing-library/react-hooks'
 
-import useArray from "./useArray";
+import useArray from "./useArray.js";
 
 // function beforeHook(cb){
 //     let output = {};
