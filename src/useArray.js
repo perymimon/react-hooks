@@ -2,7 +2,7 @@ import {useDebugValue, useState} from "react";
 
 export default useArray;
 
-export  function useArray(initArray) {
+export function useArray(initArray) {
     const [array, setArray] = useState(initArray)
     useDebugValue(array)
 
@@ -42,9 +42,17 @@ export  function useArray(initArray) {
         })
     }
 
+    function remove(index) {
+        setArray(a => {
+            const newArray = [...a]
+            newArray.splice(index, 1)
+            return newArray
+        })
+    }
+
     function clear() {
         setArray([])
     }
 
-    return {array, push, pop, shift, unshift, filter, update, splice, clear}
+    return {array, push, pop, shift, unshift, remove, filter, update, splice, clear}
 }

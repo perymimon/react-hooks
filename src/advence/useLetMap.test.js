@@ -12,7 +12,6 @@ import useRenderCount from "../debuging/useRenderCount.js";
 // }
 
 describe('testing useLetMapQueue', () => {
-    // Initialising the Jooks wrapper
     let rerender, result
     beforeEach(() => {
         ({rerender, result} = renderHook(() => {
@@ -27,16 +26,17 @@ describe('testing useLetMapQueue', () => {
     });
 
     it('set', () => {
-        let [map] = result.current
+        let [map, count] = result.current;
         act(() => map.set('foo', 3));
         // expect hook rerender
-        [map] = result.current
-        expect(map.get('foo')).toBe(3)
-        expect(result.current[1]).toBe(2);
+        [map, count] = result.current;
+        expect(map.get('foo')).toBe(3);
+        expect(count.fullRender).toBeGreaterThanOrEqual(3);
 
-        [map] = result.current
-        act(() => map.set('foo', 4))
-        expect(result.current[1]).toBe(3)
+        [map] = result.current;
+        act(() => map.set('foo', 4));
+        [,count] = result.current;
+        expect(count.fullRender).toBeGreaterThanOrEqual(3);
     });
 
 

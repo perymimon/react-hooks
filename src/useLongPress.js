@@ -1,7 +1,6 @@
-import useEventListener from "./useEventListener";
-import {useState} from "react";
-import useTimeout from "./useTimeout";
-import useEffectOnce from "./useEffectOnce";
+import useEventListener from "./useEventListener.js";
+import useTimeout from "./useTimeout.js";
+import useEffectOnce from "./useEffectOnce.js";
 
 export default useLongPress
 

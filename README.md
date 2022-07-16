@@ -6,9 +6,43 @@ simple and useful react hook collection without any dependencies
 npm i @perymimon/react-hooks
 ```
 
-### useToggle
+### useCssClass
 
-```jsx
+get js object with css classes name as keys, true value mean class is active
+false value mean class is not active
+
+```js
+import {useCssClass} from '@perymimon/react-hooks';
+
+function Demo({user}) {
+
+    const classes = useCssClass({
+        'outline': true,
+        'error': false,
+        'disconnected': user.disconected,
+    });
+    
+    // classes == "outline" || classes = "outline disconnected"
+    
+    return (
+        <div className={classes}>
+            <div className="active"></div>
+            <div className="disabled"></div>
+            <div className="hidden"></div>
+        </div>
+    );
+
+}
+
+
+```
+
+```js
+
+###
+useToggle
+
+    ```jsx
 import {useToggle} from '@perymimon/react-hooks/useToggle';
 
 function Demo() {
@@ -398,6 +432,7 @@ function Demo() {
 ```
 
 ### useUpdateEffect
+
 call callback only if it's changed, skip on the first render
 
 ```jsx
@@ -420,11 +455,12 @@ function Demo() {
 ```
 
 ### useEffectOnce
- run callback only once, on the first render
+
+run callback only once, on the first render
 
 ```jsx
 import {useEffectOnce} from '@perymimon/react-hooks/useEffectOnce';
-    
+
 function Demo() {
     useEffectOnce(() => {
         console.log('effect');
@@ -438,10 +474,10 @@ function Demo() {
 }
 ```    
 
-
 ## debuggers
 
 ### useRenderCount
+
 count the number of times the component is rendered
 
     import {useRenderCount} from '@perymimon/react-hooks/useRenderCount';
@@ -459,16 +495,16 @@ count the number of times the component is rendered
         );
     }
 
-
 ### useDebugInfo
+
 console log info about component
 
 ```jsx
 import {useDebugInfo} from '@perymimon/react-hooks/useDebugInfo';
-    
+
 function Demo() {
     const [value, setValue] = useState(0);
-    const {count, changedProps, lastRender, timeSinceLastRender } = useDebugInfo();
+    const {count, changedProps, lastRender, timeSinceLastRender} = useDebugInfo();
 
     return (
         <div>
@@ -484,6 +520,7 @@ function Demo() {
 ```
 
 ### useOnScreen
+
 return true if element is on screen, false otherwise
 
 ```jsx
@@ -493,8 +530,8 @@ function Demo() {
     const [value, setValue] = useState(0);
     const elementRef = useRef();
     const isVisible = useOnScreen(elementRef);
-    
-   
+
+
     return (
         <div className="scrolable-contaniner">
             <div ref={elementRef}>
@@ -506,6 +543,7 @@ function Demo() {
 ```
 
 ### useScript
+
 load script to document body from url
 
 ```jsx
@@ -524,6 +562,7 @@ function Demo() {
 ```
 
 ### useSize
+
 return size of element from ResizeObserver
 
 ```jsx
@@ -531,10 +570,10 @@ import {useSize} from '@perymimon/react-hooks/useSize';
 
 function Demo() {
     const {width, height} = useSize(elementRef);
-    
+
     return (
         <div>
-             <textarea ref={elementRef} resize/>
+            <textarea ref={elementRef} resize/>
             <div>width: {width}</div>
             <div>height: {height}</div>
         </div>
@@ -544,13 +583,14 @@ function Demo() {
 ```
 
 ### useStateWithValidation
+
 state with isValid flag
 
 ```jsx
 import {useStateWithValidation} from '@perymimon/react-hooks/useStateWithValidation';
 
 function Demo() {
-    const [state, setValue, isValid] = useStateWithValidation(v=>Number(v)>5, 0);
+    const [state, setValue, isValid] = useStateWithValidation(v => Number(v) > 5, 0);
     return (
         <div>
             <input value={value} onChange={e => setValue(e.target.value)}/>
@@ -563,6 +603,7 @@ function Demo() {
 ```
 
 ### useWindowSize
+
 return width and height of the window
 
 ```jsx
@@ -578,13 +619,15 @@ function Demo() {
     )
 }
 ```
+
 ### useLetMap
+
 return New Map that aware to changed values
 
 ```jsx
 import {useLetMap} from '@perymimon/react-hooks/useLetMap';
 
-function Demo(){
+function Demo() {
     const [value, setValue] = useState(0);
     const map = useLetMap();
     map.set('key', value);
@@ -593,22 +636,22 @@ function Demo(){
             <input value={value} onChange={e => setValue(e.target.value)}/>
             <div>map: {map.get('key')}</div>
         </div>
-    )    
+    )
 }
 ````
 
-
 ### useLetMapQueue
+
 manage a queue for each key
 
 ```jsx
 import {useLetMapQueue} from '@perymimon/react-hooks/useLetMapQueue';
 
-function Demo(){
+function Demo() {
     const {map, push, shift, peek, peekLast, deleteKey} = useLetMapQueue('key');
     const [value, setValue] = useState(0);
     const [key, setKey] = useState(0);
-    
+
     return (
         <div>
             <input value={value} onChange={e => setValue(e.target.value)}/>
@@ -624,3 +667,106 @@ function Demo(){
 }
 
 ```
+
+### useRefs
+
+create multiple refs
+
+```jsx
+import {useRefs} from '@perymimon/react-hooks/useRefs';
+
+function Demo() {
+    const [someRef, anotherRef] = useRefs();
+    return (
+        <div>
+            <div ref={someRef}>someRef</div>
+            <div ref={anotherRef}>anotherRef</div>
+        </div>
+    )
+}
+```
+
+### useRefWithCallback
+
+call callback when ref element in mount and unmount
+
+```jsx 
+import {useRefWithCallback} from '@perymimon/react-hooks/useRefWithCallback';
+
+function Demo() {
+    const onMouseDown = useCallback(e => console.log('hi!', e.target.clientHeight), []);
+
+    const setDivRef = useRefWithCallback(
+        node => node.addEventListener("mousedown", onMouseDown),
+        node => node.removeEventListener("mousedown", onMouseDown)
+    );
+
+    return (<div ref={setDivRef}></div>)
+
+}
+
+```
+
+### useStateRef
+
+extract some values from element when it mounts
+
+```jsx
+import {useStateRef} from '@perymimon/react-hooks/useStateRef';
+
+function Demo() {
+    const [clientHeight, setRef] = useStateRef(node => (node?.clientHeight || 0));
+
+    useEffect(() => {
+        console.log(`the new clientHeight is: ${clientHeight}`);
+    }, [clientHeight])
+
+    return (
+        <div ref={setRef}> .... </div>
+    <div>the current height is: {clientHeight}</div>
+)
+}
+
+
+```
+
+### useRun
+
+like useMemo but guarantee the collback not run on some memories free behaviour
+
+```jsx  
+ import {useRun} from '@perymimon/react-hooks/useRun';
+
+function Demo() {
+
+    useRun(() => {
+        console.log('hi');
+    }, [])
+
+    return <div>hi</div>
+}
+
+``` 
+
+### useArrayToMap
+
+convert array of objects to JS Map
+
+```jsx  
+import {useArrayToMap} from '@perymimon/react-hooks/useArrayToMap';
+
+funciton Demo(){
+    
+    const map = useArrayToMap([{id: 1, name: 'a'}, {id: 2, name: 'b'}], 'id');
+    
+    return (
+        <div>
+            <div>map: 1: {map.get('1')}</div>
+            <div>map: 2: {map.get('2')}</div>
+        </div>
+    )
+    
+}
+
+
+

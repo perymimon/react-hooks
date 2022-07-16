@@ -1,9 +1,8 @@
-export default useAsyncForceRender
-import {useRef, useLayoutEffect, useState, useCallback} from "react";
+import {useRef, useLayoutEffect, useCallback, useReducer} from "react";
 
 export function useAsyncForceRender() {
     const resolver = useRef(null);
-    const [referenceBuster, forceRender] = useState([]);
+    const [referenceBuster, forceRender] =  useReducer(x => x + 1, 0);
     useLayoutEffect(_ => {
         resolver.current?.(referenceBuster)
         resolver.current = null;
@@ -11,11 +10,13 @@ export function useAsyncForceRender() {
 
     const render = useCallback(_ => {
         if( resolver.current ) return resolver.current;
-        return new Promise((res, rej) => {
+        return new Promise((res) => {
             resolver.current = res;
-            forceRender([])
+            forceRender()
         })
     }, [])
 
     return [render, referenceBuster];
 }
+
+export default useAsyncForceRender

@@ -27,7 +27,7 @@ export function useRun(callback, dependencies) {
 }
 
 /** rerun just when dependencies true or no previous run */
-export function useRerun(callback, condition) {
+export function useRunWhenRise(callback, condition) {
     const value = useRef(null);
     const prevCondition = useRef(false);
     condition = typeof condition === 'function' ? condition() : condition;

@@ -1,4 +1,4 @@
-import useRenderCount from "./useRenderCount";
+import useRenderCount from "./useRenderCount.js";
 import {useDebugValue, useEffect, useRef} from "react";
 
 export default useDebugInfo;
