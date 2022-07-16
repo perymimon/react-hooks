@@ -6,9 +6,43 @@ simple and useful react hook collection without any dependencies
 npm i @perymimon/react-hooks
 ```
 
-### useToggle
+### useCssClass
 
-```jsx
+get js object with css classes name as keys, true value mean class is active
+false value mean class is not active
+
+```js
+import {useCssClass} from '@perymimon/react-hooks';
+
+function Demo({user}) {
+
+    const classes = useCssClass({
+        'outline': true,
+        'error': false,
+        'disconnected': user.disconected,
+    });
+    
+    // classes == "outline" || classes = "outline disconnected"
+    
+    return (
+        <div className={classes}>
+            <div className="active"></div>
+            <div className="disabled"></div>
+            <div className="hidden"></div>
+        </div>
+    );
+
+}
+
+
+```
+
+```js
+
+###
+useToggle
+
+    ```jsx
 import {useToggle} from '@perymimon/react-hooks/useToggle';
 
 function Demo() {
@@ -688,9 +722,9 @@ function Demo() {
     }, [clientHeight])
 
     return (
-        <div ref={setRef} > .... </div>
-        <div>the current height is: {clientHeight}</div>
-    )
+        <div ref={setRef}> .... </div>
+    <div>the current height is: {clientHeight}</div>
+)
 }
 
 
@@ -713,3 +747,26 @@ function Demo() {
 }
 
 ``` 
+
+### useArrayToMap
+
+convert array of objects to JS Map
+
+```jsx  
+import {useArrayToMap} from '@perymimon/react-hooks/useArrayToMap';
+
+funciton Demo(){
+    
+    const map = useArrayToMap([{id: 1, name: 'a'}, {id: 2, name: 'b'}], 'id');
+    
+    return (
+        <div>
+            <div>map: 1: {map.get('1')}</div>
+            <div>map: 2: {map.get('2')}</div>
+        </div>
+    )
+    
+}
+
+
+
