@@ -16,17 +16,15 @@ export default usePrevious;
 //     return previousRef.current
 // }
 
-export function usePrevious(value, initialValue, changedTracker=value) {
+export function usePrevious(value, initialValue, changedTracker = value) {
     const ref = useRef({value: initialValue, ver: 1});
     const {current: {value: before, ver}} = ref;
-    useRun(() => {
-        ref.current = {value, ver: ver + 1};
-    }, [changedTracker].flat());
-    useDebugValue(before, ver)
+    ref.current = useRun(() => ({value, ver: ver + 1}), [changedTracker].flat());
+    useDebugValue(before, ver);
     return [before, ver];
 }
 
-export function useLazyPrevious(value, initialValue, changedTracker=value) {
+export function useLazyPrevious(value, initialValue, changedTracker = value) {
     const ref = useRef({value: initialValue, ver: 1});
     const {current: {value: before, ver}} = ref;
     useEffect(() => {

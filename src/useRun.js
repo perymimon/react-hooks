@@ -16,8 +16,8 @@ export function useRun(callback, dependencies) {
     const prevDependencies = useRef();
 
     if (!isEqual(prevDependencies.current, dependencies)) {
+        (value.current = callback(prevDependencies.current, dependencies))
         prevDependencies.current = dependencies;
-        (value.current = callback())
     }
 
     useDebugValue(value.current)
@@ -32,8 +32,8 @@ export function useRunWhenRise(callback, condition) {
     const prevCondition = useRef(false);
     condition = typeof condition === 'function' ? condition() : condition;
     if (value.current === null || condition && !prevCondition.current) {
-        prevCondition.current = condition;
         value.current = callback();
+        prevCondition.current = condition;
     }
     useDebugValue(value.current)
     return value.current;
