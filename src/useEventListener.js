@@ -9,11 +9,12 @@ export function useEventListener(eventName, handler, element = window) {
     }, [handler]);
 
     useEffect(() => {
-        if (element == null) return;
+        const dom = 'current' in element? element.current : element;
+        if (dom == null) return;
         const handler = e => savedHandler.current(e);
-        element.addEventListener(eventName, handler);
+        dom.addEventListener(eventName, handler);
 
-        return () => element.removeEventListener(eventName, handler);
-    }, [eventName, element])
+        return () => dom.removeEventListener(eventName, handler);
+    }, [eventName, element, element?.current])
 
 }

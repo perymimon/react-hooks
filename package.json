@@ -24,6 +24,9 @@
     "@perymimon/let-map": "^1.0.1-beta.1",
     "@perymimon/react-anime-manager": "^3.1.1"
   },
+  "overrides": {
+    "@perymimon/react-hooks": "1.2.1"
+  },
   "pearDendencies": {
     "react": ">=18.0.0"
   },
