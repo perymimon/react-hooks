@@ -39,3 +39,6 @@ export * from '@perymimon/react-anime-manager/useAnimeManager'
 export * from '@perymimon/react-anime-manager/useDataIntersection'
 export * from '@perymimon/react-anime-manager/useDataIntersectionWithFuture'
 export * from '@perymimon/react-anime-manager/useTraceMovement'
+
+// animation
+export * from './src/animation/useTimingsStages.js'
