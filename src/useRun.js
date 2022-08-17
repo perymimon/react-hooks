@@ -1,6 +1,7 @@
-import {useDebugValue, useRef} from "react";
+import { useDebugValue, useRef } from "react";
 
 function isEqual(a, b) {
+    if (a == undefined || b == undefined) return false;
     if (typeof a !== typeof b) return false;
     if (a.length !== b.length) return false;
     for (let i = 0; i < a.length; i++) {
