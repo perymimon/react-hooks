@@ -1,13 +1,14 @@
 {
   "name": "@perymimon/react-hooks",
-  "version": "1.3.2",
+  "version": "1.4.2",
   "description": "a collection of react-hook I collect and write",
   "author": "Pery Mimon <pery.mimon@gmail.com>",
   "type": "module",
   "private": false,
   "main": "index.js",
   "files": [
-    "src"
+    "src",
+    "jsconfig.json"
   ],
   "exports": {
     ".": "./index.js",
