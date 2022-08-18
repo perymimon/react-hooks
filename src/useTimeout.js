@@ -1,9 +1,10 @@
+import useLatest from "advence/useLatest";
 import {useCallback, useDebugValue, useEffect, useRef} from "react";
 
 export default useTimeout;
 
 export function useTimeout(callback, delay) {
-    const callbackRef = useRef(callback);
+    const callbackRef = useLatest(callback);
     const timeoutRef = useRef();
 
     useDebugValue(delay);
