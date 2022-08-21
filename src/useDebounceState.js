@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from "react";
-import useTimeout from "./useTimeout.js";
+import useTimeout from "./timing/useTimeout.js";
 
 export default useDebounceState;
 

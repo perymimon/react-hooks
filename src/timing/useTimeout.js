@@ -1,9 +1,9 @@
-import useLatest from "./advence/useLatest.js";
+import useLatest from "../advence/useLatest.js";
 import {useCallback, useDebugValue, useEffect, useRef} from "react";
 
 export default useTimeout;
 
-function useTimeout(callback, delay, options = {}) {
+export function useTimeout(callback, delay, options = {}) {
     options.autoStart ??= true;
 
     const callbackRef = useLatest(callback);

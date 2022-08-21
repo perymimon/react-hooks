@@ -1,5 +1,5 @@
 import useEventListener from "./useEventListener.js";
-import useTimeout from "./useTimeout.js";
+import useTimeout from "./timing/useTimeout.js";
 import useEffectOnce from "./useEffectOnce.js";
 
 export default useLongPress
