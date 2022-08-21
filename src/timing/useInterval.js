@@ -3,25 +3,27 @@ import useLatest from '../advence/useLatest.js';
 
 export function useInterval(callback, delay, options) {
     const immediate = options?.immediate;
-    const autoStart = options?.autoStart ?? true;
+    options.autoStart ??= true;
 
     const fnRef = useLatest(callback);
     const timerRef = useRef();
 
+    const clear = useCallback(() => {
+        options.autoStart = false;
+        clearInterval(timerRef.current);
+    }, []);
+
     const restart = useCallback(() => {
         if (Number(delay) != delay || delay <= 0) return;
+        options.autoStart = true;
         if (immediate) {
             fnRef.current();
         }
-        clearInterval(timerRef.current);
+        clear();
         timerRef.current = setInterval(() => {
             fnRef.current();
         }, delay);
     },[]);
-
-    const clear = useCallback(() => {
-        clearInterval(timerRef.current);
-    }, []);
 
     useEffect(() => {
         if(autoStart) restart();

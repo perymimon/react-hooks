@@ -1,38 +1,31 @@
-import useLatest from "advence/useLatest";
+import useLatest from "./advence/useLatest.js";
 import {useCallback, useDebugValue, useEffect, useRef} from "react";
 
 export default useTimeout;
 
-export function useTimeout(callback, delay) {
+function useTimeout(callback, delay, options = {}) {
+    options.autoStart ??= true;
+
     const callbackRef = useLatest(callback);
     const timeoutRef = useRef();
 
-    useDebugValue(delay);
 
-    useEffect(() => {
-        callbackRef.current = callback;
-    }, [callback]);
-
-    const set = useCallback(() => {
+    const clear = useCallback(() => {
+        options.autoStart = false;
         clearTimeout(timeoutRef.current);
+    })
+
+    const restart = useCallback(() => {
+        options.autoStart = true;
+        clear();
         timeoutRef.current = setTimeout(() => callbackRef.current(), delay);
     })
 
-    const clear = useCallback(() => {
-        clearTimeout(timeoutRef.current);
-    })
-
     useEffect(() => {
-        set();
+        if(options.autoStart) restart();
         return clear;
-    }, [set, clear, delay]);
+    }, [restart, clear, delay]);
 
-    const reset = useCallback(() => {
-        clear();
-        set();
-    }, [set, clear]);
 
-    return {clear, reset};
+    return {clear, restart};
 }
-
-
