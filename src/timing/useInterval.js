@@ -1,34 +1,49 @@
+import useTimeout from '@perymimon/react-hooks/src/timing/useTimeout.js';
 import { useRef, useEffect, useCallback } from 'react';
 import useLatest from '../advence/useLatest.js';
 
-export function useInterval(callback, delay, options) {
-    const immediate = options?.immediate;
+export function useInterval(callback, interval, options) {
+    options.immediate ??= false;
+    options.delay ??= 0;
     options.autoStart ??= true;
 
     const fnRef = useLatest(callback);
+    const fnInitRef = useLatest(options.init);
     const timerRef = useRef();
 
-    const clear = useCallback(() => {
-        options.autoStart = false;
-        clearInterval(timerRef.current);
-    }, []);
+    var intClear = useCallback(() => clearInterval(timerRef.current), []);
 
-    const restart = useCallback(() => {
-        if (Number(delay) != delay || delay <= 0) return;
-        options.autoStart = true;
-        if (immediate) {
+    var intRestart = useCallback(() => {
+        if (Number(interval) != interval || interval <= 0) return;
+        fnInitRef.current?.();
+        if (options.immediate) {
             fnRef.current();
         }
         clear();
         timerRef.current = setInterval(() => {
             fnRef.current();
-        }, delay);
-    },[]);
+        }, interval);
+    }, []);
+
+    const { clear: outClear, restart: outRestart } =
+        useTimeout(intRestart, options.delay, { autoStart: false });
+
+    var clear = useCallback(() => {
+        options.autoStart = false;
+        intClear();
+        outClear();
+    }, [intClear, outClear]);
+
+    var restart = useCallback(() => {
+        options.autoStart = true;
+        if (options.delay > 0) outRestart();
+        else intRestart();
+    }, [intRestart, outRestart]);
 
     useEffect(() => {
-        if(autoStart) restart();
+        if (options.autoStart) restart();
         return clear;
-    }, [delay]);
+    }, [interval]);
 
-    return {clear, restart};
+    return { clear, restart };
 }
