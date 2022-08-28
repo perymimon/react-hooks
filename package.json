@@ -18,7 +18,10 @@
   },
   "scripts": {
     "test:debug": "nodemon --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand ",
-    "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js -- --verbose"
+    "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js -- --verbose",
+    "pub":"npm version patch --force && npm publish",
+    "pub:major":"npm version major --force && npm publish",
+    "pub:minor":"npm version minor --force && npm publish"
   },
   "dependencies": {
     "@perymimon/let-map": "^1.0.1-beta.1",
