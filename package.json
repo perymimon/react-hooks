@@ -1,6 +1,6 @@
 {
   "name": "@perymimon/react-hooks",
-  "version": "1.4.8",
+  "version": "1.4.10",
   "description": "a collection of react-hook I collect and write",
   "author": "Pery Mimon <pery.mimon@gmail.com>",
   "type": "module",

@@ -1,6 +1,6 @@
-import useTimeout from '@perymimon/react-hooks/src/timing/useTimeout.js';
 import { useRef, useEffect, useCallback } from 'react';
 import useLatest from '../advence/useLatest.js';
+import useTimeout from './useTimeout.js';
 
 export function useInterval(callback, interval, options) {
     options.immediate ??= false;
