@@ -1,7 +1,7 @@
 // init jest test environment for testing hooks
 import {renderHook, act} from '@testing-library/react-hooks'
 
-import { useCssClass } from './css/useCssClass.js';
+import { useCssClass } from './useCssClass.js';
 
 fdescribe('useCssClass', () => {
     fit('should return correct string', () => {
